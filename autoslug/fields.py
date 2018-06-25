@@ -270,9 +270,10 @@ class AutoSlugField(SlugField):
                 print('Failed to populate slug %s.%s from %s' % \
                       (instance._meta.object_name, self.name, self.populate_from))
 
+        slug = None
         if value:
             slug = self.slugify(value)
-        else:
+        if not slug:
             slug = None
 
             if not self.blank:
